@@ -13,8 +13,6 @@ class ShowWidget: public QWidget{
     Q_OBJECT
 public:
     explicit ShowWidget(QWidget *parent = 0);
-    QImage img;//图像
-    QLabel *imageLabel;//显示图像的控件
     QTextEdit *text;//文本数据
 
 signals:

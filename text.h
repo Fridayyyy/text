@@ -15,6 +15,7 @@
 #include <QToolButton>
 #include <QTextCharFormat>
 #include <QApplication>
+#include <QPushButton>
 #include "showwidget.h"
 
 class Text : public QMainWindow{
@@ -33,26 +34,24 @@ public:
 protected slots:
     void ShowNewFile();
     void ShowOpenFile();
+    void SaveFile();
     void ShowPrintText();
-    void ShowPrintImage();
-    void ShowZoomIn();
-    void ShowZoomOut();
-    void ShowRotate90();
-    void ShowRotate180();
-    void ShowRotate270();
-    void ShowMirrorVertical();
-    void ShowMirrorHorizontal();
     void ShowAbout();
 
-    void ShowFontComboBox(QString comboStr);//字体类型
-    void SHowSizeSpinBox(QString spinValue);//字体大小
+    void textBold();
+    void textItalic();
+    void textUnderline();
+
+
+    void ShowFontComboBox(const QFont &);//字体类型
+    void ShowSizeSpinBox(int size);//字体大小
     void ShowBoldBtn();
     void ShowItalicBtn();
     void ShowUnderlineBtn();
     void ShowColorBtn();
     void ShowCurrentFormatChanged(const QTextCharFormat &fmt);
 
-    void ShowList(int);
+
     void ShowAlignment(QAction *act);
     void ShowCursorPositionChanged();
 
@@ -61,12 +60,12 @@ private:
     QString fileName;
 
     QMenu *fileMenu;
-    QMenu *zoomMenu;
-    QMenu *rotateMenu;
-    QMenu *mirrorMenu;
+    QMenu *fontMenu;
 
     QAction *openFileAction;
     QAction *newFileAction;
+    QAction *saveFileAction;
+
     QAction *printTextAction;
     QAction *printImageAction;
     QAction *exitAction;
@@ -74,21 +73,16 @@ private:
     QAction *cutAction;
     QAction *pasteAction;
     QAction *aboutAction;
-    QAction *zoomInaction;
-    QAction *zoomOutAction;    //缩小动作控件
-    QAction *rotate90Action;    //旋转90度动作控件
-    QAction *rotate180Action;    //旋转180度动作控件
-    QAction *rotate270Action;    //旋转270度动作控件
-    QAction *mirrorVerticalAction;    //横向镜像动作控件
-    QAction *mirrorHorizontalAction;    //垂直镜像动作控件
+
+    QAction *boldAction;
+    QAction *italicAction;
+    QAction *underlineAction;
+
     QAction *undoAction;    //撤销动作控件
     QAction *redoAction;
 
     //toolbar
     QToolBar *fileTool;
-    QToolBar *zoomTool;
-    QToolBar *rotateTool;
-    QToolBar *mirrorTool;
     QToolBar *doToolBar;
 
     //button and label
@@ -96,10 +90,10 @@ private:
     QFontComboBox *fontComboBox;
     QLabel *fontLabel2;
     QComboBox *sizeComboBox;
-    QToolButton *boldBtn;
-    QToolButton *italicBtn;
-    QToolButton *underlineBtn;
-    QToolButton *colorBtn;
+    QPushButton *boldBtn;
+    QPushButton *italicBtn;
+    QPushButton *underlineBtn;
+    QPushButton *colorBtn;
     QToolBar *fontToolBar;
 
     //文本对齐
